@@ -1,6 +1,7 @@
 require('dotenv').config()
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const { Intents } = require('discord.js');
+const client = new Discord.Client({ intents: [Intents.FLAGS.GUILD_MESSAGES] });
 
 // 定义事件：当Bot完成登录并准备好时触发
 client.on('ready', () => {
