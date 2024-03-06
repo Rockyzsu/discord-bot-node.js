@@ -2,12 +2,20 @@
 require('dotenv').config();
 
 // Discord.js versions ^13.0 require us to explicitly define client intents
-const { Client, Intents } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
-
-client.on('ready', () => {
- console.log(`Logged in as ${client.user.tag}!`);
+const { Client, GatewayIntentBits } = require('discord.js');
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+  ],
 });
+
+client.on('messageCreate', (message) => {
+    console.log(`👍 works as expected`);
+  });
+  client.on('interactionCreate', (interaction) => {
+    console.log(`👍 works as expected`);
+  });
 
 // Log In our bot
 // client.login(process.env.CLIENT_TOKEN);
